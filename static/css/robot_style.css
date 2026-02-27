@@ -1,0 +1,169 @@
+/* Import Google Font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+:root {
+  /* Base colors for the medical chatbot */
+  --text-color: #4A4A4A;
+  --subheading-color: #707070;
+  --primary-color: #ffffff;
+  --secondary-color: #F2F7FC;
+  --accent-color: #009688;  /* Medical green */
+  --error-color: #F44336;   /* Error red */
+  --highlight-color: #0288d1; /* Blue highlight */
+}
+.light_mode {
+  --text-color: #222;
+  --subheading-color: #6C6C6C;
+  --primary-color: #FFF;
+  --secondary-color: #E9EEF6;
+  --accent-color: #0288d1;
+}
+body {
+  background: var(--primary-color);
+}
+.header, .chat-list .message, .typing-form {
+  margin: 0 auto;
+  max-width: 980px;
+}
+.header {
+  margin-top: 6vh;
+  padding: 1rem;
+  overflow-x: hidden;
+}
+body.hide-header .header {
+  margin: 0;
+  display: none;
+}
+.header :where(.title, .subtitle) {
+  color: var(--text-color);
+  font-weight: 500;
+  line-height: 4rem;
+}
+.header .title {
+  font-size: 3rem;
+  background-clip: text;
+  background: linear-gradient(to right, #0288d1, #d96570);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.header .subtitle {
+  font-size: 2rem;
+  color: var(--subheading-color);
+}
+
+/* Suggestion Cards */
+.suggestion-list {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 5vh;
+  overflow: hidden;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.suggestion-list .suggestion {
+  cursor: pointer;
+  padding: 1.5rem;
+  width: 240px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border-radius: 1rem;
+  justify-content: space-between;
+  background: var(--secondary-color);
+  transition: 0.3s ease-in-out;
+}
+.suggestion-list .suggestion:hover {
+  background: var(--highlight-color);
+  transform: translateY(-5px);
+}
+.suggestion-list .suggestion .icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  font-size: 1.6rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  color: white;
+}
+
+/* Chat Box Styling */
+.chat-list {
+  padding: 2rem 1rem 10rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.chat-list .message {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: var(--secondary-color);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.chat-list .message.incoming {
+  background: var(--accent-color);
+  color: white;
+}
+.chat-list .message.outgoing {
+  background: #F1F1F1;
+  color: var(--text-color);
+}
+
+/* Typing Input Styling */
+.typing-area {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: 1rem;
+  background: var(--primary-color);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.typing-area .typing-input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 50px;
+  background: var(--secondary-color);
+  border: none;
+  color: var(--text-color);
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.3s ease;
+}
+.typing-area .typing-input:focus {
+  background: var(--highlight-color);
+  color: white;
+}
+.typing-area .icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--highlight-color);
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.typing-area .icon:hover {
+  background: #0288d1;
+}
+.typing-area #send-message-button {
+  display: none;
+}
+
+/* Responsive design for small devices */
+@media (max-width: 768px) {
+  .header :where(.title, .subtitle) {
+    font-size: 2rem;
+  }
+  .chat-list {
+    max-height: 50vh;
+  }
+}

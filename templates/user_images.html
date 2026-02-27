@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-5" style="font-size: 2.5rem; font-weight: 600; color: #333;">Your Uploaded Images and Results</h2>
+
+    {% if user_uploaded_images %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for image in user_uploaded_images %}
+                <div class="col">
+                    <div class="card shadow-lg border-light rounded-4 overflow-hidden">
+                        <!-- Image Thumbnail -->
+                        <img src="{{ image.image.url }}" class="card-img-top" alt="Uploaded Image" style="height: 300px; object-fit: cover; transition: transform 0.3s ease;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-weight: 600; color: #333;">Prediction Result</h5>
+                            <p class="card-text" style="font-size: 1.2rem; color: {% if image.result == 'Cancer Detected' %}#e74c3c{% else %}#2ecc71{% endif %}; font-weight: bold;">
+                                {{ image.result }}
+                            </p>
+                            {% if image.cancer_type %}
+                                <p><strong>Cancer Type:</strong> {{ image.cancer_type }}</p>
+                            {% endif %}
+                            <p class="text-muted" style="font-size: 0.9rem;"><strong>Uploaded on:</strong> {{ image.timestamp|date:"F j, Y, H:i" }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center mt-4" role="alert">
+            <strong>No images uploaded yet!</strong> Start by uploading an image to check for cancer detection results.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+<style>
+    .card-img-top:hover {
+    transform: scale(1.05);
+}
+/* Styling for the cards' hover effect */
+.card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom styling for empty state */
+.text-muted {
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+</style>

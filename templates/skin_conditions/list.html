@@ -1,0 +1,57 @@
+<!-- templates/skin_conditions/list.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Skin Conditions</h2>
+    </div>
+
+    {% if conditions %}
+    <!-- Card Grid -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for condition in conditions %}
+        <div class="col">
+            <div class="card h-100 border-0 shadow-sm">
+                <!-- Condition Image -->
+                {% if condition.image %}
+                <img src="{{ condition.image.url }}" class="card-img-top object-fit-cover" alt="{{ condition.name }}" style="height: 200px; object-fit: cover;">
+                {% else %}
+                <img src="{% static 'default.jpg' %}" class="card-img-top object-fit-cover" alt="No Image Available" style="height: 200px; object-fit: cover;">
+                {% endif %}
+
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ condition.name }}</h5>
+                    <p class="card-text">
+                        <span class="badge 
+                            {% if condition.condition_type == 'malignant' %}bg-danger
+                            {% elif condition.condition_type == 'benign' %}bg-success
+                            {% elif condition.condition_type == 'precancerous' %}bg-warning text-dark
+                            {% endif %}
+                        ">
+                            {{ condition.get_condition_type_display }}
+                        </span>
+                    </p>
+
+                    <div class="mt-auto">
+                        <a href="{% url 'skincondition_detail' condition.pk %}" class="btn btn-outline-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+                <div class="card-footer text-muted small">
+                    Detected: {{ condition.detected_at|date:"M d, Y" }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <!-- Empty State -->
+    <div class="alert alert-info text-center">
+        <p class="mb-1">No skin conditions found.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

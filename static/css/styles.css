@@ -1,0 +1,155 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f8fb;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;  /* Make sure the body takes full height */
+}
+
+/* Header styling */
+header {
+    background-color: #2f77a1;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header nav ul {
+    list-style-type: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header .logo h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Sidebar styling */
+aside {
+    width: 250px;
+    background-color: #eaf4f7;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+aside ul {
+    list-style-type: none;
+}
+
+aside ul li {
+    margin-bottom: 10px;
+}
+
+aside ul li a {
+    text-decoration: none;
+    color: #2f77a1;
+    font-size: 1.1em;
+}
+
+aside ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Main content */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    flex-grow: 1;  /* Make sure the container takes the remaining space */
+}
+
+main {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.form-section, .result-section {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+h2, h3 {
+    color: #2f77a1;
+}
+
+/* Submit button */
+.btn-submit {
+    background-color: #2f77a1;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #1f5786;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #2f77a1;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto; /* Ensures footer stays at the bottom when content is less */
+}
+
+footer ul {
+    list-style-type: none;
+}
+
+footer ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    aside {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    main {
+        margin-left: 0;
+    }
+}

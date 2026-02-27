@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .about-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.about-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.section-heading {
+    font-size: 1.75rem;
+    color: #1abc9c;
+    margin-top: 2rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.features-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.feature-card {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 250px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.feature-icon {
+    font-size: 2rem;
+    color: #3498db;
+    margin-bottom: 0.5rem;
+}
+
+.disclaimer {
+    background-color: #fff3cd;
+    padding: 1.5rem;
+    border-left: 5px solid #ffc107;
+    margin-top: 2rem;
+    border-radius: 8px;
+}
+
+.developer-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.developer-profile {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    width: 250px;
+}
+
+.developer-photo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 100%;
+    margin-bottom: 1rem;
+}
+
+.role {
+    font-weight: bold;
+    color: #888;
+}
+
+.social-link {
+    display: inline-block;
+    margin: 0.5rem;
+    color: #2980b9;
+    text-decoration: none;
+}
+
+</style>
+<div class="container">
+    <div class="content-wrapper">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h2 class="about-heading">🌞 About SkinScan AI</h2>
+            <p class="about-subtitle">
+                <strong>SkinScan AI</strong> is your personal skin health companion, designed to empower early detection of skin cancer using AI-powered image analysis and intuitive design.
+            </p>
+        </section>
+
+        <!-- How It Works -->
+        <section class="info-section">
+            <h3 class="section-heading">🔍 How It Works</h3>
+            <p>Just snap a photo. Let our intelligent system take care of the rest.</p>
+            <div class="features-list">
+                {% comment %} Feature Cards {% endcomment %}
+                <div class="feature-card">
+                    <i class="fa fa-camera-retro feature-icon"></i>
+                    <h4>Smart Image Scanner</h4>
+                    <p>Take or upload a photo of a mole or spot. Get instant insights powered by dermatology-trained AI.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-brain feature-icon"></i>
+                    <h4>AI-Powered Detection</h4>
+                    <p>Our neural network is trained on thousands of clinical images to flag early warning signs accurately.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-chart-line feature-icon"></i>
+                    <h4>Personalized Risk Report</h4>
+                    <p>We analyze your age, skin tone, UV exposure, and history to deliver a tailored risk profile.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-user-md feature-icon"></i>
+                    <h4>Dermatologist Referral</h4>
+                    <p>If risk is detected, we guide you to licensed dermatologists nearby for further evaluation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose -->
+        <section class="info-section">
+            <h3 class="section-heading">💡 Why Choose SkinScan AI?</h3>
+            <div class="features-list">
+                <div class="feature-card">
+                    <i class="fa fa-eye feature-icon"></i>
+                    <h4>Early Detection Saves Lives</h4>
+                    <p>Melanoma is highly treatable when caught early. SkinScan AI helps make that possible.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-shield-alt feature-icon"></i>
+                    <h4>Privacy First</h4>
+                    <p>Your data is end-to-end encrypted and never shared without consent.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-mobile feature-icon"></i>
+                    <h4>Effortless Experience</h4>
+                    <p>Designed for users of all ages, our app is intuitive, responsive, and beautifully simple.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa fa-sync-alt feature-icon"></i>
+                    <h4>Always Improving</h4>
+                    <p>We update our algorithms with the latest dermatological data and research insights.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimer -->
+        <section class="info-section disclaimer">
+            <h3 class="section-heading">⚠️ Disclaimer</h3>
+            <p>
+                <strong>SkinScan AI</strong> is a screening tool only and should not replace professional diagnosis or treatment. Always consult a licensed medical professional if you're concerned about any skin condition.
+            </p>
+        </section>
+
+        <!-- Meet the Team -->
+        <section class="info-section">
+            <h3 class="section-heading">👩‍💻 Meet the Developers</h3>
+            <p>Behind <strong>SkinScan AI</strong> is a passionate team of engineers and designers dedicated to saving lives through early detection technology.</p>
+
+            <div class="developer-section">
+                <div class="developer-profile">
+                    <img src="{% static "E:\1 Online_Project\skin_cancer_detector\static\images\Me.webp" %}" alt="Jane Doe" class="developer-photo">
+                    <h4>Muhammad Faheem Iqbal</h4>
+                    <p class="role">Lead AI Engineer</p>
+                    <p>Architected the deep learning model driving real-time lesion classification.</p>
+                    <a href="https://www.linkedin.com/in/jane-doe" target="_blank" class="social-link">LinkedIn</a>
+                    <a href="https://github.com/janedoe" target="_blank" class="social-link">GitHub</a>
+                </div>
+                <div class="developer-profile">
+                    <img src="{% static 'E:\1 Online_Project\skin_cancer_detector\static\images\Hasnain.jpeg' %}" alt="John Smith" class="developer-photo">
+                    <h4>Muhammad Hasnain</h4>
+                    <p class="role">Full Stack Developer</p>
+                    <p>Implemented secure backend services and streamlined API communication.</p>
+                    <a href="https://www.linkedin.com/in/john-smith" target="_blank" class="social-link">LinkedIn</a>
+                    <a href="https://github.com/johnsmith" target="_blank" class="social-link">GitHub</a>
+                </div>
+                <div class="developer-profile">
+                    <img src="{% static 'E:\1 Online_Project\skin_cancer_detector\static\images\salman.jpeg' %}" alt="Alice Johnson" class="developer-photo">
+                    <h4>Salman Saleem</h4>
+                    <p class="role">UI/UX Designer</p>
+                    <p>Designed the user experience to be inclusive, accessible, and visually clean.</p>
+                    <a href="https://www.linkedin.com/in/alice-johnson" target="_blank" class="social-link">LinkedIn</a>
+                    <a href="https://github.com/alicejohnson" target="_blank" class="social-link">GitHub</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+<!-- templates/skin_conditions/detail.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+            <div class="card shadow-sm border-0">
+                <!-- Image Preview -->
+                {% if condition.image %}
+                <img src="{{ condition.image.url }}" class="card-img-top rounded-top" alt="{{ condition.name }}" style="max-height: 400px; object-fit: cover;">
+                {% else %}
+                <img src="{% static 'default.jpg' %}" class="card-img-top rounded-top" alt="No Image Available" style="max-height: 400px; object-fit: cover;">
+                {% endif %}
+
+                <div class="card-body py-4">
+                    <h2 class="card-title mb-3">{{ condition.name }}</h2>
+
+                    <p>
+                        <span class="badge 
+                            {% if condition.condition_type == 'malignant' %}bg-danger
+                            {% elif condition.condition_type == 'benign' %}bg-success
+                            {% elif condition.condition_type == 'precancerous' %}bg-warning text-dark
+                            {% endif %}
+                        fs-6">
+                            {{ condition.get_condition_type_display }}
+                        </span>
+                    </p>
+
+                    <hr>
+
+                    <p class="card-text">
+                        <strong>Description:</strong><br>
+                        {{ condition.description|linebreaks }}
+                    </p>
+
+                    <p class="text-muted mt-3 mb-0">
+                        <i class="bi bi-clock"></i> Detected At: {{ condition.detected_at|date:"F j, Y, g:i a" }}
+                    </p>
+                </div>
+
+                <!-- Actions -->
+                <div class="card-footer bg-light border-top py-3">
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'skincondition_list' %}" class="btn btn-secondary">
+                            ← Back to List
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
